@@ -5,12 +5,19 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 public class AddressBookTest {
+    AddressBook addressBook=new AddressBook();
     @Test
-    public void Test_contact_object_return_correct_data() {
+    public void test_Contact_Object_Return_Correct_Data() {
         Contact contact = new Contact("Roshan","Sabale","Panchvati","Nashik","Maharshtra","422003","8527419630","rs@gmail.com");
         //AddressBookMain addressBookMain = new AddressBookMain();
-        AddressBook addressBook=new AddressBook();
         boolean contact_status = addressBook.addContact(contact);
         Assert.assertTrue(contact_status);
+    }
+    @Test
+    public void given_ContactName_IsPresentOrNot(){
+        Contact contact = new Contact("Roshan","Sabale","Panchvati","Nashik","Maharshtra","422003","8527419630","rs@gmail.com");
+        addressBook.addContact(contact);
+        boolean status = addressBook.editContactByEmail("rs@gmail.com");
+        Assert.assertEquals(true,status);
     }
 }

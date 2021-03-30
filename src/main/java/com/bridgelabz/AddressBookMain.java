@@ -32,7 +32,19 @@ public class AddressBookMain {
         System.out.println("*** Welcome To AddressBook System ***");
         AddressBook addressBook=new AddressBook();
         AddressBookMain addressBookMain=new AddressBookMain();
-        Contact contact=addressBookMain.takeInputFromUser();
-        addressBook.addContact(contact);
+        Scanner scanner = new Scanner(System.in);
+        String choice;
+        do {
+            System.out.println("A:Add new contact" + "\n" + "B:Update/Modify contact details" + "\n" + "H:Exit" + "\n" + "Enter your choice:");
+            choice = scanner.nextLine();
+            if(choice.equalsIgnoreCase("A")==true) {
+                Contact contact = addressBookMain.takeInputFromUser();
+                addressBook.addContact(contact);
+            }else if(choice.equalsIgnoreCase("B")==true) {
+                System.out.println("Enter E-mail id you want to update");
+                String email = scanner.nextLine();
+                addressBook.editContactByEmail(email);
+            }
+        }while(!choice.equalsIgnoreCase("H"));
     }
 }
