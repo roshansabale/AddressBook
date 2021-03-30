@@ -106,7 +106,7 @@ public class AddressBookMain {
                 default:
                     System.out.println("List of Contacts in Address Book of Mumbai :");
                     System.out.println(addressBook[0].getAddressBook());
-                    System.out.println("List of Contacts in Address Book of Chennai :");
+                    System.out.println("List of Contacts in Address Book of Nashik :");
                     System.out.println(addressBook[1].getAddressBook());
                     //  System.out.println("AddressBook:"+addressBook.getAddressBook());
             }
