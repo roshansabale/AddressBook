@@ -7,7 +7,7 @@ public class AddressBook {
     //UC:1 Ability to create contact
     Contact contact;
     Scanner scanner = new Scanner(System.in);
-    public ArrayList<Contact> addressBook = new ArrayList<Contact>();
+    public ArrayList<Contact> addressBook = new ArrayList<>();
 
     public ArrayList<Contact> getAddressBook() {
         return addressBook;
@@ -91,11 +91,11 @@ public class AddressBook {
         boolean status = false;
         System.out.println("Enter E-mail id you want to delete");
         String emailDelete = scanner.nextLine();
-        for (Contact contact1 : addressBook) {
-            checkEmail = contact1.getEmail();
+        for (Contact contact : addressBook) {
+            checkEmail = contact.getEmail();
             System.out.println(checkEmail);
             if (emailDelete.equalsIgnoreCase(checkEmail)) {
-                addressBook.remove(contact1);
+                addressBook.remove(contact);
                 status = true;
             } else {
                 System.out.println("No any user belongs to this " + emailDelete + " mail id Try Again !!");
@@ -104,4 +104,5 @@ public class AddressBook {
         }
         return true;
     }
+
 }

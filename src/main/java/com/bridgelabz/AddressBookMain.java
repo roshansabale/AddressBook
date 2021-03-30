@@ -35,7 +35,7 @@ public class AddressBookMain {
         Scanner scanner = new Scanner(System.in);
         String choice;
         do {
-            System.out.println("A:Add new contact" + "\n" + "B:Update/Modify contact details" + "\n"+ "C:Delete contact details" +"\n" + "H:Exit" + "\n" + "Enter your choice:");
+            System.out.println("A:Add new contact" + "\n" + "B:Update/Modify contact details" + "\n"+ "C:Delete contact details"+"\n"+ "D:Add Multiple Contact in AddressBook"+"\n" + "H:Exit" + "\n" + "Enter your choice:");
             choice = scanner.nextLine();
             if(choice.equalsIgnoreCase("A")==true) {
                 Contact contact = addressBookMain.takeInputFromUser();
@@ -46,7 +46,17 @@ public class AddressBookMain {
                 addressBook.editContactByEmail(email);
             }else if(choice.equalsIgnoreCase("C")==true) {
                 addressBook.deleteContact();
+            }else if(choice.equalsIgnoreCase("D")==true){
+                System.out.println("Enter how many contact you want to create");
+                int contactCount = scanner.nextInt();
+                for(int count=0;count<contactCount;count++)
+                {
+                    Contact contact=addressBookMain.takeInputFromUser();
+                    addressBook.addContact(contact);
+                    addressBook.getAddressBook();
+                }
             }
+            System.out.println("AddressBook:"+addressBook.getAddressBook());
         }while(!choice.equalsIgnoreCase("H"));
     }
 }
