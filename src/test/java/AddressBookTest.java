@@ -9,7 +9,7 @@ public class AddressBookTest {
     public void test_Contact_Object_Return_Correct_Data() {
         Contact contact = new Contact("Roshan","Sabale","Panchvati","Nashik","Maharshtra","422003","8527419630","rs@gmail.com");
         //AddressBookMain addressBookMain = new AddressBookMain();
-        AddressBook addressBook=new AddressBook();
+        AddressBook addressBook=new AddressBook("Test");
         boolean contact_status = addressBook.addContact(contact);
         Assert.assertTrue(contact_status);
     }

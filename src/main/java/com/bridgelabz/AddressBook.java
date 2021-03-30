@@ -7,8 +7,12 @@ public class AddressBook {
     //UC:1 Ability to create contact
     Contact contact;
     Scanner scanner = new Scanner(System.in);
-    public ArrayList<Contact> addressBook = new ArrayList<>();
+    public String name;
 
+    public ArrayList<Contact> addressBook = new ArrayList<>();
+    public AddressBook(String name) {
+        this.name=name;
+    }
     public ArrayList<Contact> getAddressBook() {
         return addressBook;
     }
