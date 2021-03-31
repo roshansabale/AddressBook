@@ -5,11 +5,12 @@ import java.util.Scanner;
 
 public class AddressBook {
     //UC:1 Ability to create contact
-    Contact contact;
+
     Scanner scanner = new Scanner(System.in);
     public String name;
 
     public ArrayList<Contact> addressBook = new ArrayList<>();
+
     public AddressBook(String name) {
         this.name=name;
     }
@@ -22,11 +23,17 @@ public class AddressBook {
     }
 
     public boolean addContact(Contact contact) {
-        if (contact != null) {
-            addressBook.add(contact);
-            System.out.println(contact);
+        for(int count = 0; count < addressBook.size(); count++) {
+            if(addressBook.get(count).equals(contact)) {
+                System.out.println("The person already exists!!!");
+                }
         }
-        return true;
+        addressBook.add(contact);
+        System.out.println(addressBook);
+        for(Contact contact1 : addressBook) {
+            System.out.println(contact1);
+        }
+        return  true;
     }
 
     public boolean editContactByEmail(String email) {
@@ -90,19 +97,17 @@ public class AddressBook {
         return status;
     }
 
-    public boolean deleteContact() {
+    public boolean deleteContact(String email) {
         String checkEmail;
         boolean status = false;
-        System.out.println("Enter E-mail id you want to delete");
-        String emailDelete = scanner.nextLine();
         for (Contact contact : addressBook) {
             checkEmail = contact.getEmail();
             System.out.println(checkEmail);
-            if (emailDelete.equalsIgnoreCase(checkEmail)) {
+            if (email.equalsIgnoreCase(checkEmail)) {
                 addressBook.remove(contact);
                 status = true;
             } else {
-                System.out.println("No any user belongs to this " + emailDelete + " mail id Try Again !!");
+                System.out.println("No any user belongs to this " + email + " mail id Try Again !!");
                 status = false;
             }
         }

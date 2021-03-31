@@ -85,6 +85,17 @@ public class Contact {
         this.email = email;
     }
 
+    public boolean equals(Object object) {
+        boolean result = false;
+        if(object == this) {
+            return true;
+        }
+        Contact contact = (Contact)object;
+        if(contact.firstName.equals(this.firstName) && contact.lastName.equals(this.lastName)) {
+            result = true;
+        }
+        return result;
+    }
     @Override
     public String toString() {
         return "Contact{" +
