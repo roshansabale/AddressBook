@@ -73,7 +73,7 @@ public class AddressBookMain {
         }
     }
 
-    public static void viewContactByCityOrState(String city) {
+    public static void viewContactByCity(String city) {
         List<Contact> list = new ArrayList<>();
         for(Map.Entry<String, AddressBook> entries : addressBookHashMap.entrySet()) {
             list = entries.getValue().getAddressBook().stream().filter(p -> p.getCity().equalsIgnoreCase(city)).collect(Collectors.toList());
@@ -96,13 +96,33 @@ public class AddressBookMain {
             }
         }
     }
+
+    public static void  getCountByCity(String city4) {
+        long count1 = 0;
+        for(Map.Entry<String, AddressBook> entries : addressBookHashMap.entrySet()) {
+            long count = entries.getValue().getAddressBook().stream().filter(p -> p.getCity().equals(city4)).count();
+            count1 += count;
+        }
+        System.out.println(count1 + " Contacts in " + city4);
+    }
+
+    public static void getCountByState(String state4) {
+        long count1 = 0;
+        for(Map.Entry<String, AddressBook> entries : addressBookHashMap.entrySet()) {
+            long count = entries.getValue().getAddressBook().stream().filter(p -> p.getState().equals(state4)).count();
+            count1 += count;
+        }
+        System.out.println(count1 + " Contacts in " + state4);
+
+    }
+
     public static void main(String[] args) {
         System.out.println("*** Welcome To AddressBook System ***");
         AddressBookMain addressBookMain=new AddressBookMain();
         Scanner scanner = new Scanner(System.in);
         int choice = 0;
         do {
-            System.out.println("1:Add new contact" + "\n" + "2:Update/Modify contact details" + "\n" + "3:Delete contact details" + "\n" + "4:Serach Contact by City or State" +"\n"+ "5:View Contact by City or State"+"\n"+ "6:Exit" + "\n" + "Enter your choice:");
+            System.out.println("1:Add new contact" + "\n" + "2:Update/Modify contact details" + "\n" + "3:Delete contact details" + "\n" + "4:Serach Contact by City or State" +"\n"+ "5:View Contact by City"+"\n"+"6:View Contact by State"+"\n"+ "7:Get contact count for city" +"\n"+ "8:Get contact count for state" +"\n"+"9:Exit"+"\n"+ "Enter your choice:");
             choice = scanner.nextInt();
             
             switch (choice) {
@@ -146,12 +166,22 @@ public class AddressBookMain {
                 case 5:
                     System.out.println("Enter the city you want to view");
                     String city3 = scanner.next();
-                    viewContactByCityOrState(city3);
+                    viewContactByCity(city3);
                     break;
                 case 6:
                     System.out.println("Enter the state you want view");
                     String state=scanner.next();
                     viewPersonByState(state);
+                    break;
+                case 7:
+                    System.out.println("Enter the city for you want to count contact");
+                    String city4 = scanner.next();
+                    getCountByCity(city4);
+                    break;
+                case 8:
+                    System.out.println("Enter the state for you want to count contact");
+                    String state4 = scanner.next();
+                    getCountByState(state4);
                     break;
                 default:
                     System.out.println(Arrays.asList(addressBookHashMap)); // method 1
@@ -160,6 +190,6 @@ public class AddressBookMain {
                         System.out.println(entry.getKey()+"\t"+entry.getValue().getAddressBook()); }
 
             }
-        }while(choice != 7);
+        }while(choice != 9);
     }
 }
