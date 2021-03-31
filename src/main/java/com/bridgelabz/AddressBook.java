@@ -109,21 +109,20 @@ public class AddressBook {
         return status;
     }
 
-    public boolean deleteContact(String email) {
+    public void deleteContact(String email) {
         String checkEmail;
-        boolean status = false;
+
         for (Contact contact : addressBook) {
             checkEmail = contact.getEmail();
             System.out.println(checkEmail);
             if (email.equalsIgnoreCase(checkEmail)) {
+                System.out.println("Address Book Before"+addressBook);
                 addressBook.remove(contact);
-                status = true;
+                System.out.println("Contact Deleted!!");
+                System.out.println("Address Book after"+addressBook);
             } else {
                 System.out.println("No any user belongs to this " + email + " mail id Try Again !!");
-                status = false;
             }
         }
-        return true;
     }
-
 }
