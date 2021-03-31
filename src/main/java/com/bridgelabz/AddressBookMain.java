@@ -125,13 +125,39 @@ public class AddressBookMain {
                 .forEach(contact -> System.out.println(contact.getFirstName()+" "+contact.getLastName()));
     }
 
+    public static void sortByZip() {
+        List<Contact> list = new ArrayList<>();
+        for(Map.Entry<String, AddressBook> entries : addressBookHashMap.entrySet()) {
+            list = entries.getValue().getAddressBook().stream().collect(Collectors.toList());
+        }
+        list.stream().sorted((p1, p2) -> ((String)p1.getZip()).compareTo(p2.getZip()))
+                .forEach(contact -> System.out.println(contact.getFirstName()+" "+contact.getLastName()));
+    }
+    public static void sortByState() {
+        List<Contact> list = new ArrayList<>();
+        for(Map.Entry<String, AddressBook> entries : addressBookHashMap.entrySet()) {
+            list = entries.getValue().getAddressBook().stream().collect(Collectors.toList());
+        }
+        list.stream().sorted((p1, p2) -> ((String)p1.getState()).compareTo(p2.getState()))
+                .forEach(contact -> System.out.println(contact.getFirstName()+" "+contact.getLastName()));
+    }
+
+    public static void sortByCity() {
+        List<Contact> list = new ArrayList<>();
+        for(Map.Entry<String, AddressBook> entries : addressBookHashMap.entrySet()) {
+            list = entries.getValue().getAddressBook().stream().collect(Collectors.toList());
+        }
+        list.stream().sorted((p1, p2) -> ((String)p1.getCity()).compareTo(p2.getCity()))
+                .forEach(contact -> System.out.println(contact.getFirstName()+" "+contact.getLastName()));
+    }
+
     public static void main(String[] args) {
         System.out.println("*** Welcome To AddressBook System ***");
         AddressBookMain addressBookMain=new AddressBookMain();
         Scanner scanner = new Scanner(System.in);
         int choice = 0;
         do {
-            System.out.println("1:Add new contact" + "\n" + "2:Update/Modify contact details" + "\n" + "3:Delete contact details" + "\n" + "4:Serach Contact by City or State" +"\n"+ "5:View Contact by City"+"\n"+"6:View Contact by State"+"\n"+ "7:Get contact count for city" +"\n"+ "8:Get contact count for state" +"\n"+"9:Exit"+"\n"+ "Enter your choice:");
+            System.out.println("1:Add new contact" + "\n" + "2:Update/Modify contact details" + "\n" + "3:Delete contact details" + "\n" + "4:Serach Contact by City or State" +"\n"+ "5:View Contact by City"+"\n"+"6:View Contact by State"+"\n"+ "7:Get contact count for city" +"\n"+ "8:Get contact count for state" +"\n"+"9:Sort contact by name"+"\n"+"10:Sort Contact By City|Zip|State" +"\n"+"11:Exit"+"\n"+"Enter your choice:");
             choice = scanner.nextInt();
             
             switch (choice) {
@@ -193,7 +219,16 @@ public class AddressBookMain {
                     getCountByState(state4);
                     break;
                 case 9:
+                    System.out.println("Sort by name");
                     sortByName();
+                    break;
+                case 10:
+                    System.out.println("Sort By Zip:");
+                    sortByZip();
+                    System.out.println("Sort By City:");
+                    sortByCity();
+                    System.out.println("Sort By State:");
+                    sortByState();
                     break;
                 default:
                     System.out.println(Arrays.asList(addressBookHashMap)); // method 1
@@ -202,6 +237,6 @@ public class AddressBookMain {
                         System.out.println(entry.getKey()+"\t"+entry.getValue().getAddressBook()); }
 
             }
-        }while(choice != 9);
+        }while(choice != 11);
     }
 }
