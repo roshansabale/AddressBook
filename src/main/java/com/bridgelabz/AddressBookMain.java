@@ -116,6 +116,15 @@ public class AddressBookMain {
 
     }
 
+    public static void sortByName() {
+        List<Contact> list = new ArrayList<>();
+        for(Map.Entry<String, AddressBook> entries : addressBookHashMap.entrySet()) {
+            list = entries.getValue().getAddressBook().stream().collect(Collectors.toList());
+        }
+        list.stream().sorted((p1, p2) -> ((String)p1.getFirstName()).compareTo(p2.getFirstName()))
+                .forEach(contact -> System.out.println(contact.getFirstName()+" "+contact.getLastName()));
+    }
+
     public static void main(String[] args) {
         System.out.println("*** Welcome To AddressBook System ***");
         AddressBookMain addressBookMain=new AddressBookMain();
@@ -182,6 +191,9 @@ public class AddressBookMain {
                     System.out.println("Enter the state for you want to count contact");
                     String state4 = scanner.next();
                     getCountByState(state4);
+                    break;
+                case 9:
+                    sortByName();
                     break;
                 default:
                     System.out.println(Arrays.asList(addressBookHashMap)); // method 1
