@@ -22,17 +22,29 @@ public class AddressBook {
         this.addressBook = addressBook;
     }
 
-    public boolean addContact(Contact contact) {
+    public boolean checkDuplicateEntry(Contact contact) {
+        boolean status=false;
         for(int count = 0; count < addressBook.size(); count++) {
             if(addressBook.get(count).equals(contact)) {
+                status=true;
+            }else {
+                status=false;
+            }
+        }
+        return status;
+    }
+    public boolean addContact(Contact contact) {
+        boolean duplicateStatus= checkDuplicateEntry(contact);
+            if (duplicateStatus==false) {
+                addressBook.add(contact);
+            }else {
                 System.out.println("The person already exists!!!");
-                }
-        }
-        addressBook.add(contact);
-        System.out.println(addressBook);
-        for(Contact contact1 : addressBook) {
-            System.out.println(contact1);
-        }
+            }
+            System.out.println("AddressBook Data:"+addressBook);
+            for(Contact contact1 : addressBook) {
+                System.out.println(contact1);
+            }
+            System.out.println("Contact added successfully!!");
         return  true;
     }
 

@@ -41,7 +41,7 @@ public class AddressBookMain {
                     System.out.println("Enter emailId number:");
                     String emailID = scanner.nextLine();
                     Contact contact = new Contact(firstName, lastName, address, city, state, zipcode, phoneNumber, emailID);
-                    System.out.println("Contact added successfully!!");
+
                     for (Map.Entry<String, AddressBook> entry : addressBookHashMap.entrySet()) {
                         if (entry.getKey().equalsIgnoreCase(cityForMap)) {
                             entry.getValue().addContact(contact);
@@ -56,6 +56,7 @@ public class AddressBookMain {
 
             System.out.println(addressBookHashMap);
     }
+
 
     public static void main(String[] args) {
         System.out.println("*** Welcome To AddressBook System ***");
