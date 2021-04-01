@@ -88,7 +88,7 @@ public class AddressBookMain {
         for(Map.Entry<String,Map<String, AddressBook>> entries : stateBookHashMap.entrySet()) {
             if(entries.getKey().equalsIgnoreCase(state)) {
                 for(Map.Entry<String,AddressBook> Entry : addressBookHashMap.entrySet()) {
-                    System.out.println("The List for city "+ Entry.getKey()+" is :"+Entry.getValue());
+                    System.out.println("The List for city "+ Entry.getKey()+" is :"+Entry.getValue().getAddressBook());
                 }
             }
             for(Contact contact : list) {
