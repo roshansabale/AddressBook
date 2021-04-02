@@ -133,6 +133,7 @@ public class AddressBookMain {
         list.stream().sorted((p1, p2) -> ((String)p1.getZip()).compareTo(p2.getZip()))
                 .forEach(contact -> System.out.println(contact.getFirstName()+" "+contact.getLastName()));
     }
+
     public static void sortByState() {
         List<Contact> list = new ArrayList<>();
         for(Map.Entry<String, AddressBook> entries : addressBookHashMap.entrySet()) {
