@@ -35,8 +35,8 @@ public class AddressBook {
     }
 
     public boolean addContact(Contact contact) {
-        boolean duplicateStatus= checkDuplicateEntry(contact);
-            if (duplicateStatus==false) {
+        boolean duplicateStatus = checkDuplicateEntry(contact);
+            if (duplicateStatus == false) {
                 addressBook.add(contact);
             }else {
                 System.out.println("The person already exists!!!");

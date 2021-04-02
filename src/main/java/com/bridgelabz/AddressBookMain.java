@@ -32,10 +32,10 @@ public class AddressBookMain {
                     String lastName = scanner.next();
                     System.out.println("Enter address name:");
                     String address = scanner.next();
-                   // System.out.println("Enter city name:");
+                   //on add contact above code we first accept city and state for avoid conflict
                     String city = cityName;
-                    //System.out.println("Enter state name:");
                     String state = stateName;
+
                     System.out.println("Enter zip code:");
                     String zipcode = scanner.next();
                     System.out.println("Enter phone number:");
@@ -167,7 +167,7 @@ public class AddressBookMain {
                     new AddressBookMain().addDataToAddressBook();//Add Contact Details
                     break;
                 case 2:
-                    System.out.println("Enter E-mail id you want to update");
+                    System.out.println("Enter E-mail id you want to update"); //Edit Contact Details
                     String email = scanner.next();
                     System.out.println("Enter the addressbook name (city)");
                     String city = scanner.next();
@@ -180,7 +180,7 @@ public class AddressBookMain {
                     }
                     break;
                 case 3:
-                    System.out.println("Enter E-mail id you want to delete");
+                    System.out.println("Enter E-mail id you want to delete"); //Delete Contact
                     String email1 = scanner.next();
                     System.out.println("Enter the addressbook name (city)");
                     String city1 = scanner.next();
@@ -195,46 +195,46 @@ public class AddressBookMain {
                     break;
                 case 4:
                     String name1;
-                    System.out.println("Enter City , First+Last Name you want to search:");
+                    System.out.println("Enter City , First+Last Name you want to search:"); //Search contact using city
                     String city2 = scanner.next();
                     name1= scanner.next();
                     searchContactByCityOrState(city2,name1);
                     break;
                 case 5:
-                    System.out.println("Enter the city you want to view");
+                    System.out.println("Enter the city you want to view");  //View contact using city (addressbook name)
                     String city3 = scanner.next();
                     viewContactByCity(city3);
                     break;
                 case 6:
-                    System.out.println("Enter the state you want view");
+                    System.out.println("Enter the state you want view"); ////View contact using state (addressbook name)
                     String state=scanner.next();
                     viewPersonByState(state);
                     break;
                 case 7:
-                    System.out.println("Enter the city for you want to count contact");
+                    System.out.println("Enter the city for you want to count contact"); //Count the total contact in perticular city
                     String city4 = scanner.next();
                     getCountByCity(city4);
                     break;
                 case 8:
-                    System.out.println("Enter the state for you want to count contact");
+                    System.out.println("Enter the state for you want to count contact"); //count contact in particular state
                     String state4 = scanner.next();
                     getCountByState(state4);
                     break;
                 case 9:
-                    System.out.println("Sort by name");
+                    System.out.println("Sort by name");     //Sort contact by name
                     sortByName();
                     break;
                 case 10:
-                    System.out.println("Sort By Zip:");
+                    System.out.println("Sort By Zip:");  //Sort contact by zip code
                     sortByZip();
-                    System.out.println("Sort By City:");
+                    System.out.println("Sort By City:");    //Sort contact by zip code
                     sortByCity();
-                    System.out.println("Sort By State:");
+                    System.out.println("Sort By State:");   //Sort contact by zip code
                     sortByState();
                     break;
                 default:
-                    System.out.println(Arrays.asList(addressBookHashMap)); // method 1
-                    System.out.println(Collections.singletonList(addressBookHashMap)); // method 2
+                    System.out.println(Arrays.asList(addressBookHashMap)); // method 1 to print addressbookhasmap
+                    System.out.println(Collections.singletonList(addressBookHashMap)); // method 2 to print addressbookhasmap
                     for (Map.Entry<String,AddressBook> entry : addressBookHashMap.entrySet()) {
                         System.out.println(entry.getKey()+"\t"+entry.getValue().getAddressBook()); }
 

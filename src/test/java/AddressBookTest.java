@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 public class AddressBookTest {
 
     @Test
-    public void test_Contact_Object_Return_Correct_Data() {
+    public void testContactObject_WhenCorrectWithDara_ShouldReturnTrue() {
         Contact contact = new Contact("Roshan","Sabale","Panchvati","Nashik","Maharshtra","422003","8527419630","rs@gmail.com");
         //AddressBookMain addressBookMain = new AddressBookMain();
         AddressBook addressBook=new AddressBook("Test");
