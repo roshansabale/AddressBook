@@ -33,6 +33,7 @@ public class AddressBook {
         }
         return status;
     }
+
     public boolean addContact(Contact contact) {
         boolean duplicateStatus= checkDuplicateEntry(contact);
             if (duplicateStatus==false) {

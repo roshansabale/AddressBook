@@ -65,7 +65,8 @@ public class AddressBookMain {
         List<Contact> contactList=new ArrayList<>();
 
         for (Map.Entry<String,AddressBook> entry : addressBookHashMap.entrySet()) {
-            contactList=entry.getValue().getAddressBook().stream().filter(p -> p.getCity().equalsIgnoreCase(city)).filter(p -> (p.getFirstName() + p.getLastName()).equals(name)).collect(Collectors.toList());
+            contactList=entry.getValue().getAddressBook().stream().filter(p -> p.getCity().equalsIgnoreCase(city))
+                    .filter(p -> (p.getFirstName() + p.getLastName()).equals(name)).collect(Collectors.toList());
         }
         for (Contact contact: contactList) {
             System.out.println("Search result:"+contact);
